@@ -17,6 +17,9 @@ typedef struct Node * NodePtr;
 void add(int data);
 int delete(int data);
 void printList();
+int getSize();
+int isEmpty();
+int contains(int data);
 
 NodePtr head; //First element of linked list
 
@@ -106,6 +109,35 @@ void printList(){
 	}
 	
 	printf("NULL\n"); //Last element is always NULL
+}
+
+int getSize(){
+	NodePtr current = head;
+	int size = 0;
+	
+	while(current != NULL){
+		size++;
+		current = current->next;
+	}
+	
+	return size;
+}
+
+int isEmpty(){
+	if(getSize() == 0) return TRUE;
+	else return FALSE;
+}
+
+int contains(int data){
+	NodePtr current = head;
+	
+	while(current != NULL){
+		if(current->data == data) return TRUE;
+		
+		current = current->next;
+	}
+	
+	return FALSE;
 }
 
 void instructions(){
