@@ -5,13 +5,14 @@ using namespace std;
 
 struct Node {
 	int value;
+	struct Node * previous;
 	struct Node * next;
 };
 
 typedef struct Node Node;
 typedef struct Node * NodePtr;
 
-class LinkedList {	
+class DoublyLinkedList{
 	public:
 		NodePtr head = NULL;
 		
@@ -21,8 +22,8 @@ class LinkedList {
 		bool contains(int value);
 		bool isEmpty(void);
 		void printList(void);
-
-		LinkedList(){
+		
+		DoublyLinkedList(){
 			size = 0;
 		}
 		
@@ -30,9 +31,10 @@ class LinkedList {
 		int size;
 };
 
-void LinkedList::addNode(int value){
+void DoublyLinkedList::addNode(int value){
 	NodePtr newNode = (NodePtr)malloc(sizeof(Node));
 	newNode->value = value;
+	newNode->previous = NULL;
 	newNode->next = NULL;
 	
 	size++;
@@ -48,16 +50,22 @@ void LinkedList::addNode(int value){
 		current = current->next;
 	}
 	
+	newNode->previous = current;
 	current->next = newNode;
 }
 
-bool LinkedList::deleteNode(int value){
+bool DoublyLinkedList::deleteNode(int value){
 	NodePtr current = this->head;
 	NodePtr previous;
 	
 	while(current != NULL){
 		if(current->value == value){
-			previous->next = current->next;			
+			previous->next = current->next;
+			
+			if(current->next != NULL){
+				current->next->previous = previous;
+			}
+					
 			free(current);
 			
 			size--;
@@ -72,11 +80,11 @@ bool LinkedList::deleteNode(int value){
 	return false;
 }
 
-int LinkedList::getSize(void){
+int DoublyLinkedList::getSize(void){
 	return size;
 }
 
-bool LinkedList::contains(int value){
+bool DoublyLinkedList::contains(int value){
 	NodePtr current = this->head;
 	
 	if(! this->isEmpty()){
@@ -91,41 +99,54 @@ bool LinkedList::contains(int value){
 	return false;
 }
 
-bool LinkedList::isEmpty(void){
-	return LinkedList::getSize() == 0 ? true : false;
+bool DoublyLinkedList::isEmpty(void){
+	return this->getSize() == 0 ? true : false;
 }
 
-void LinkedList::printList(void){
+void DoublyLinkedList::printList(void){
 	NodePtr current = this->head;
+	NodePtr last;
 		
 	if(this->isEmpty()){
 		cout << "The list is empty.";
 		return;
 	}
 	
+	cout << "Printing list from left to right:" << endl << endl;
+	
 	while(current != NULL){
 		cout << current->value << " -> ";
+		last = current;
 		current = current->next;
 	}
 	
 	cout << "NULL" << endl << endl;
+	
+	cout << "Printing list from right to left:" << endl << endl;
+	cout << "NULL";
+	
+	while(last != NULL){
+		cout << " -> " << last->value;
+		last = last->previous;
+	}	
+	
+	cout << endl << endl;
 }
 
 int main(){
-	LinkedList ll = LinkedList();
-	ll.addNode(3);
-	ll.addNode(5);
-	ll.addNode(4);
-	ll.addNode(0);
-	ll.addNode(6);
-	ll.addNode(7);
+	DoublyLinkedList dll = DoublyLinkedList();
+	dll.addNode(1);
+	dll.addNode(7);
+	dll.addNode(3);
+	dll.addNode(4);
+	dll.addNode(3);	
+	dll.addNode(3);
 	
-	ll.printList();
+	dll.printList();
 	
-	ll.deleteNode(4);
-	ll.deleteNode(6);
+	dll.deleteNode(7);
 	
-	ll.printList();
+	dll.printList();
 	
-	return 0;
+	return 1;
 }
