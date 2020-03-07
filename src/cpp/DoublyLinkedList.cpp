@@ -1,36 +1,8 @@
 #include <iostream>
 #include <stdlib.h>
+#include "DoublyLinkedList.h"
 
 using namespace std;
-
-struct Node {
-	int value;
-	struct Node * previous;
-	struct Node * next;
-};
-
-typedef struct Node Node;
-typedef struct Node * NodePtr;
-
-class DoublyLinkedList{
-	public:
-		NodePtr head = NULL;
-		
-		void addNode(int value);
-		bool deleteNode(int value);
-		int indexOf(int value);
-		int getSize(void);
-		bool contains(int value);
-		bool isEmpty(void);
-		void printList(void);
-		
-		DoublyLinkedList(){
-			size = 0;
-		}
-		
-	private:
-		int size;
-};
 
 void DoublyLinkedList::addNode(int value){
 	NodePtr newNode = (NodePtr)malloc(sizeof(Node));
@@ -109,6 +81,24 @@ bool DoublyLinkedList::isEmpty(void){
 	return this->getSize() == 0 ? true : false;
 }
 
+int DoublyLinkedList::peek(int index){
+	NodePtr current = this->head;
+	int i = 0;
+	
+	while(i < index){
+		current = current->next;
+		
+		if(current == NULL){
+			cout << "Invalid index!";
+			return NULL;
+		}
+		
+		i++;
+	}
+	
+	return current->value;
+}
+
 void DoublyLinkedList::printList(void){
 	NodePtr current = this->head;
 	NodePtr last;
@@ -137,22 +127,4 @@ void DoublyLinkedList::printList(void){
 	}	
 	
 	cout << endl << endl;
-}
-
-int main(){
-	DoublyLinkedList dll = DoublyLinkedList();
-	dll.addNode(1);
-	dll.addNode(7);
-	dll.addNode(3);
-	dll.addNode(4);
-	dll.addNode(3);	
-	dll.addNode(3);
-	
-	dll.printList();
-	
-	dll.deleteNode(7);
-	
-	dll.printList();
-	
-	return 1;
 }

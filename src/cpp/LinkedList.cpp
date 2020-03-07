@@ -1,35 +1,8 @@
 #include <iostream>
 #include <stdlib.h>
+#include "LinkedList.h"
 
 using namespace std;
-
-struct Node {
-	int value;
-	struct Node * next;
-};
-
-typedef struct Node Node;
-typedef struct Node * NodePtr;
-
-class LinkedList {	
-	public:
-		NodePtr head = NULL;
-		
-		void addNode(int value);
-		bool deleteNode(int value);
-		int indexOf(int value);
-		int getSize(void);
-		bool contains(int value);
-		bool isEmpty(void);
-		void printList(void);
-
-		LinkedList(){
-			size = 0;
-		}
-		
-	private:
-		int size;
-};
 
 void LinkedList::addNode(int value){
 	NodePtr newNode = (NodePtr)malloc(sizeof(Node));
@@ -101,6 +74,23 @@ bool LinkedList::isEmpty(void){
 	return LinkedList::getSize() == 0 ? true : false;
 }
 
+int LinkedList::peek(int index){
+	NodePtr current = this->head;
+	int i = 0;
+	
+	while(i < index){
+		current = current->next;
+		
+		if(current == NULL){
+			throw "Invalid index!";
+		}
+		
+		i++;
+	}
+	
+	return current->value;
+}
+
 void LinkedList::printList(void){
 	NodePtr current = this->head;
 		
@@ -115,23 +105,4 @@ void LinkedList::printList(void){
 	}
 	
 	cout << "NULL" << endl << endl;
-}
-
-int main(){
-	LinkedList ll = LinkedList();
-	ll.addNode(3);
-	ll.addNode(5);
-	ll.addNode(4);
-	ll.addNode(0);
-	ll.addNode(6);
-	ll.addNode(7);
-	
-	ll.printList();
-	
-	ll.deleteNode(4);
-	ll.deleteNode(6);
-	
-	ll.printList();
-	
-	return 0;
 }
