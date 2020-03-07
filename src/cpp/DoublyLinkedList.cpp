@@ -18,6 +18,7 @@ class DoublyLinkedList{
 		
 		void addNode(int value);
 		bool deleteNode(int value);
+		int indexOf(int value);
 		int getSize(void);
 		bool contains(int value);
 		bool isEmpty(void);
@@ -80,23 +81,28 @@ bool DoublyLinkedList::deleteNode(int value){
 	return false;
 }
 
+int DoublyLinkedList::indexOf(int value){
+	NodePtr current = this->head;
+	int i = 0;
+	
+	while(current != NULL){
+		if(current->value == value){
+			return i;
+		}
+		
+		i++;
+		current = current->next;
+	}
+	
+	return -1;
+}
+
 int DoublyLinkedList::getSize(void){
 	return size;
 }
 
 bool DoublyLinkedList::contains(int value){
-	NodePtr current = this->head;
-	
-	if(! this->isEmpty()){
-		while(current != NULL){
-			if(current->value == value){
-				return true;
-			}
-			current = current->next;
-		}
-	}
-	
-	return false;
+	return this->indexOf(value) == -1 ? false : true;
 }
 
 bool DoublyLinkedList::isEmpty(void){
