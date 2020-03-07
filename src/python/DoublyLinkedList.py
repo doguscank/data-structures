@@ -44,21 +44,43 @@ class DoublyLinkedList():
 		self.size += 1
 
 	def remove(self, data):
+		if self.is_empty():
+			raise Exception('Empty list!')
+
 		index = self.index_of(data)
+
 		if index == -1:
 			raise Exception('Can not find any node with given data!')
 		self.remove_at(index)
 
 	def remove_at(self, index):
+		if self.is_empty():
+			raise Exception('Empty list!')
+
 		if index < 0:
 			raise Exception('Invalid index!')
 
 		trav = self.head
 
+		if index == 0:
+			try:
+				trav.next_node.prev_node = None
+			except:
+				pass
+
+			self.head = trav.next_node
+			self.size -= 1
+			return
+
 		for i in range(self.size):
 			if i == index:
 				trav.prev_node.next_node = trav.next_node
-				trav.next_node.prev_node = trav.prev_node
+				
+				try:
+					trav.next_node.prev_node = trav.prev_node
+				except:
+					pass
+
 			else:
 				trav = trav.next_node
 
@@ -68,19 +90,13 @@ class DoublyLinkedList():
 		if self.is_empty():
 			raise Exception('Empty list!')
 
-		if self.head is not None:
-			self.head.next_node.prev_node = None
-			self.head = self.head.next_node
-			self.size -= 1
+		self.remove_at(0)
 
 	def remove_tail(self):
 		if self.is_empty():
 			raise Exception('Empty list!')
 
-		if self.tail is not None:
-			self.tail.prev_node.next_node = None
-			self.tail = self.tail.prev_node
-			self.size -= 1
+		self.remove_at(self.size - 1)
 
 	def clear(self):
 		trav = self.head #Pointer node
@@ -119,14 +135,7 @@ class DoublyLinkedList():
 		return self.tail.data
 
 	def contains(self, data):
-		trav = self.head
-
-		while trav is not None:
-			if trav.data == data:
-				return True
-			trav = trav.next_node
-
-		return False
+		return self.index_of(data) != -1
 
 	def to_string(self):
 		seperator = ", "
@@ -147,10 +156,12 @@ if __name__ == '__main__':
 	dll.add(3)
 	dll.add(4)
 	dll.add(5)
+	print(dll.to_string())
 	dll.remove_head()
 	print(dll.to_string())
 	dll.remove_tail()
 	print(dll.to_string())
-	print(dll.index_of(3))
+	#print(dll.index_of(3))
 	dll.remove_at(0)
 	print(dll.to_string())
+	#print(dll.contains(4))
