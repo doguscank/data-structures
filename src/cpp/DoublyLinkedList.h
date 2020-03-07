@@ -3,6 +3,9 @@
 
 using namespace std;
 
+#ifndef DLINKEDLIST_H
+#define DLINKLIST_H
+
 struct Node {
 	int value;
 	struct Node * previous;
@@ -32,3 +35,5 @@ class DoublyLinkedList{
 	private:
 		int size;
 };
+
+#endif
