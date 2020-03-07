@@ -8,7 +8,7 @@
 
 struct Node{
 	int data;
-	struct Node *nextPtr;
+	struct Node * nextPtr;
 };
 
 typedef struct Node Node;
