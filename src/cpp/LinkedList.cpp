@@ -4,6 +4,7 @@
 
 using namespace std;
 
+//Add node to end of the list
 void LinkedList::addNode(int value){
 	NodePtr newNode = (NodePtr)malloc(sizeof(Node));
 	newNode->value = value;
@@ -25,6 +26,7 @@ void LinkedList::addNode(int value){
 	current->next = newNode;
 }
 
+//Delete node with given value
 bool LinkedList::deleteNode(int value){
 	NodePtr current = this->head;
 	NodePtr previous;
@@ -46,6 +48,30 @@ bool LinkedList::deleteNode(int value){
 	return false;
 }
 
+//Delete last node in the list
+bool LinkedList::deleteNode(){
+	NodePtr current = this->head;
+	
+	if(current == NULL){
+		cout << "The list is empty!";
+		return false;
+	}
+	
+	NodePtr previous;
+	
+	while(current->next != NULL){
+		previous = current;
+		current = current->next;
+	}
+	
+	previous->next = current->next;
+	free(current);
+	size--;
+	
+	return true;
+}
+
+//Return index of node with given value
 int LinkedList::indexOf(int value){
 	NodePtr current = this->head;
 	int i = 0;
@@ -62,18 +88,22 @@ int LinkedList::indexOf(int value){
 	return -1;
 }
 
+//Return size of the list
 int LinkedList::getSize(void){
 	return size;
 }
 
+//Check if the list contains given value
 bool LinkedList::contains(int value){
 	return this->indexOf(value) == -1 ? false : true;
 }
 
+//Check if the list contains any node
 bool LinkedList::isEmpty(void){
 	return LinkedList::getSize() == 0 ? true : false;
 }
 
+//Return element in given index if exists
 int LinkedList::peek(int index){
 	NodePtr current = this->head;
 	int i = 0;

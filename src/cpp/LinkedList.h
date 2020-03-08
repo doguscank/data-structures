@@ -20,6 +20,7 @@ class LinkedList {
 		
 		void addNode(int value);
 		bool deleteNode(int value);
+		bool deleteNode();
 		int indexOf(int value);
 		int getSize(void);
 		bool contains(int value);

@@ -5,27 +5,15 @@
 
 using namespace std;
 
+//Adds an element to the top of stack
 void Stack::push(int value){
 	this->addNode(value);
 }
 
+//Removes the element on the top of stack
 void Stack::pop(){
-	NodePtr current = this->head;
 	
-	if(current == NULL){
-		cout << "No nodes found!" << endl << endl;
-		return;
-	}
-	
-	NodePtr previous;
-	
-	while(current->next != NULL){
-		previous = current;
-		current = current->next;
-	}
-	
-	previous->next = current->next;
-	free(current);
+	this->deleteNode();
 }
 
 void Stack::printList(void){
@@ -36,10 +24,10 @@ void Stack::printList(void){
 		return;
 	}
 	
-	while(current->next != NULL){
-		cout << current->value << " -> ";
+	cout << "NULL";
+	
+	while(current != NULL){
+		cout << " -> " << current->value ;
 		current = current->next;
 	}
-	
-	cout << current->value << endl << endl;
 }
