@@ -12,10 +12,7 @@ class Queue : public LinkedList{
 		void offer(int value); //Add element to tail of queue
 		bool poll(); //Remove first element of queue
 		
-		Queue(){
-			this->size = 0;
-		}
-	
+		Queue();	
 	private:
 		int size;
 };

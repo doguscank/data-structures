@@ -4,6 +4,10 @@
 
 using namespace std;
 
+DoublyLinkedList::DoublyLinkedList(){
+	this->size = 0;
+}
+
 //Add node to end of the list
 void DoublyLinkedList::addNode(int value){
 	NodePtr newNode = (NodePtr)malloc(sizeof(Node));

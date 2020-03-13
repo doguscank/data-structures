@@ -28,10 +28,7 @@ class LinkedList {
 		int peek(int index);
 		void printList(void);
 
-		LinkedList(){
-			size = 0;
-		}
-		
+		LinkedList();		
 	private:
 		int size;
 };

@@ -27,12 +27,7 @@ class DynamicArrayTemplate{
 		T get(int index);
 		void set(int index, T newValue);
 		
-		DynamicArrayTemplate(int capacity){
-			if(capacity < 0) throw "Invalid array capacity!";
-			
-			this->capacity = capacity;
-			this->size = 0;
-		}	
+		DynamicArrayTemplate(int capacity);
 };
 
 #endif

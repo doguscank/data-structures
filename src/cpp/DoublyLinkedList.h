@@ -29,10 +29,7 @@ class DoublyLinkedList{
 		int peek(int index);
 		void printList(void);
 		
-		DoublyLinkedList(){
-			size = 0;
-		}
-		
+		DoublyLinkedList();		
 	private:
 		int size;
 };

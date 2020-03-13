@@ -13,10 +13,7 @@ class Stack : public LinkedList{
 		void pop(void);
 		void printList(void);
 		
-		Stack() : LinkedList(){
-			this->size = 0;
-		}
-	
+		Stack();	
 	private:
 		int size;
 };

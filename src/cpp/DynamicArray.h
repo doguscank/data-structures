@@ -26,12 +26,7 @@ class DynamicArray{
 		int get(int index);
 		void set(int index, int newValue);
 		
-		DynamicArray(int capacity){
-			if(capacity < 0) throw "Invalid array capacity!";
-			
-			this->capacity = capacity;
-			this->size = 0;
-		}	
+		DynamicArray(int capacity);
 };
 
 #endif

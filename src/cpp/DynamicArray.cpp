@@ -4,6 +4,13 @@
 
 using namespace std;
 
+DynamicArray::DynamicArray(int capacity){
+	if(capacity < 0) throw "Invalid array capacity!";
+	
+	this->capacity = capacity;
+	this->size = 0;
+}
+
 void DynamicArray::expand(void){
 	if(this->capacity == 0) this->capacity = 1;
 	else this->capacity *= 2;

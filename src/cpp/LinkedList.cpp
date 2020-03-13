@@ -4,6 +4,10 @@
 
 using namespace std;
 
+LinkedList::LinkedList(){
+	this->size = 0;
+}
+
 //Add node to end of the list
 void LinkedList::addNode(int value){
 	NodePtr newNode = (NodePtr)malloc(sizeof(Node));

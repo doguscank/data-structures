@@ -4,6 +4,13 @@
 
 using namespace std;
 
+DynamicArrayTemplate::DynamicArrayTemplate(int capacity){
+	if(capacity < 0) throw "Invalid array capacity!";
+	
+	this->capacity = capacity;
+	this->size = 0;
+}	
+
 template <typename T>
 void DynamicArrayTemplate<T>::expand(void){
 	if(this->capacity == 0) this->capacity = 1;

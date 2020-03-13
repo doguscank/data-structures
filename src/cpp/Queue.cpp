@@ -5,6 +5,10 @@
 
 using namespace std;
 
+Queue::Queue(){
+	this->size = 0;
+}
+
 //Add node to end of the queue
 void Queue::offer(int value){
 	this->addNode(value);

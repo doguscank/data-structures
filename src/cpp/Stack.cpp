@@ -5,6 +5,10 @@
 
 using namespace std;
 
+Stack::Stack(){
+	this->size = 0;
+}
+
 //Adds an element to the top of stack
 void Stack::push(int value){
 	this->addNode(value);
