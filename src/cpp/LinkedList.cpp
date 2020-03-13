@@ -95,12 +95,12 @@ int LinkedList::getSize(void){
 
 //Check if the list contains given value
 bool LinkedList::contains(int value){
-	return this->indexOf(value) == -1 ? false : true;
+	return this->indexOf(value) != -1;
 }
 
 //Check if the list contains any node
 bool LinkedList::isEmpty(void){
-	return LinkedList::getSize() == 0 ? true : false;
+	return LinkedList::getSize() == 0;
 }
 
 //Return element in given index if exists
