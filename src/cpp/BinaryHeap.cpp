@@ -135,30 +135,3 @@ void BinaryHeap::clear(void){
 void BinaryHeap::printList(void){
 	this->heap->printList();
 }
-
-int main() {
-	DynamicArray d = DynamicArray(1);
-	d.append(10);
-	d.append(3);
-	d.append(11);
-	d.append(5);
-	d.append(13);
-	d.append(7);
-	d.append(12);
-	d.append(1);
-	d.append(2);
-	d.append(1);
-	d.append(9);
-	d.append(3);
-	d.append(2);
-	d.append(19);
-	d.append(2);
-		
-	BinaryHeap b = BinaryHeap(&d);
-	b.printList();
-	
-	b.poll();
-	b.printList();
-	
-	return 0;
-}
