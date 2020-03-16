@@ -74,6 +74,19 @@ bool DynamicArrayTemplate<T>::remove(void){
 }
 
 template <typename T>
+bool DynamicArrayTemplate<T>::removeAtIndex(int index){
+	if(index >= this->size) return false;
+	
+	int i;
+	
+	for(i = index; i < this->size; i++) this->arr[i] = this->arr[i + 1];
+	
+	this->arr[i] = NULL;
+	this->size--;
+	return true;
+}
+
+template <typename T>
 bool DynamicArrayTemplate<T>::isEmpty(void){
 	return this->size == 0;
 }

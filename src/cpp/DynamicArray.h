@@ -18,10 +18,11 @@ class DynamicArray{
 		int indexOf(int value);
 		bool remove(int value);
 		bool remove(void);
+		bool removeAtIndex(int index);
 		bool isEmpty(void);
 		bool contains(int value);
 		int getCapacity(void);
-		int getLength(void);
+		int getSize(void);
 		void printList(void);
 		int get(int index);
 		void set(int index, int newValue);

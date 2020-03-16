@@ -19,6 +19,7 @@ class DynamicArrayTemplate{
 		int indexOf(T value);
 		bool remove(T value);
 		bool remove(void);
+		bool removeAtIndex(int index);
 		bool isEmpty(void);
 		bool contains(T value);
 		int getCapacity(void);

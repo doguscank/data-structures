@@ -68,6 +68,18 @@ bool DynamicArray::remove(void){
 	return true;
 }
 
+bool DynamicArray::removeAtIndex(int index){
+	if(index >= this->size) return false;
+	
+	int i;
+	
+	for(i = index; i < this->size; i++) this->arr[i] = this->arr[i + 1];
+	
+	this->arr[i] = NULL;
+	this->size--;
+	return true;
+}
+
 bool DynamicArray::isEmpty(void){
 	return this->size == 0;
 }
@@ -80,7 +92,7 @@ int DynamicArray::getCapacity(void){
 	return this->capacity;
 }
 
-int DynamicArray::getLength(void){
+int DynamicArray::getSize(void){
 	return this->size;
 }
 
