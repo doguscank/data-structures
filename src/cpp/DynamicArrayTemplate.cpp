@@ -4,7 +4,8 @@
 
 using namespace std;
 
-DynamicArrayTemplate::DynamicArrayTemplate(int capacity){
+template <typename T>
+DynamicArrayTemplate<T>::DynamicArrayTemplate(int capacity){
 	if(capacity < 0) throw "Invalid array capacity!";
 	
 	this->capacity = capacity;

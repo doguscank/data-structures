@@ -12,15 +12,15 @@ class BinaryHeap{
 		DynamicArray * heap = NULL;
 		
 		bool less(int index1, int index2);
+		bool swap(int index1, int index2); //Swaps two nodes at given indexes
+		void swim(int index);
+		void sink(int index);
 	public:
 		BinaryHeap(void);
 		BinaryHeap(int size);
 		BinaryHeap(DynamicArray * arr);
 		
-		void add(int value);
-		bool swap(int index1, int index2); //Swaps two nodes at given indexes
-		void swim(int index);
-		void sink(int index);
+		void add(int value);		
 		bool isEmpty(void);
 		bool contains(int value);
 		int getCapacity(void);
