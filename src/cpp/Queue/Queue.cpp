@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include "Queue.h"
-#include "LinkedList.h"
+#include "../LinkedList/LinkedList.h"
 
 using namespace std;
 

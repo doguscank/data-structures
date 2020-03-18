@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
-#include "DynamicArray.h"
+#include "../DynamicArray/DynamicArray.h"
 
 #ifndef BINARYHEAP_H
 #define BINARYHEAP_H

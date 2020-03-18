@@ -1,5 +1,3 @@
-//Nodes are sorted from smallest to largest
-
 #include <stdio.h>
 #include <stdlib.h>
 

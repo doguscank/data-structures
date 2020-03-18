@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include "BinaryHeap.h"
-#include "DynamicArray.h"
+#include "../DynamicArray/DynamicArray.h"
 
 #define MAX(i, j) i > j ? i : j
 
