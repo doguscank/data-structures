@@ -16,6 +16,8 @@ typedef struct Node Node;
 typedef struct Node * NodePtr;
 
 class DoublyLinkedList{
+	private:
+		int size;
 	public:
 		NodePtr head = NULL;
 		
@@ -29,9 +31,7 @@ class DoublyLinkedList{
 		int peek(int index);
 		void printList(void);
 		
-		DoublyLinkedList();		
-	private:
-		int size;
+		DoublyLinkedList();
 };
 
 #endif

@@ -8,13 +8,13 @@ using namespace std;
 #define QUEUE_H
 
 class Queue : public LinkedList{
+	private:
+		int size;
 	public:
 		void offer(int value); //Add element to tail of queue
 		bool poll(); //Remove first element of queue
 		
-		Queue();	
-	private:
-		int size;
+		Queue();
 };
 
 #endif

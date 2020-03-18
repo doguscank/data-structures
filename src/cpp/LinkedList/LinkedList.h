@@ -14,7 +14,9 @@ struct Node {
 typedef struct Node Node;
 typedef struct Node * NodePtr;
 
-class LinkedList {	
+class LinkedList {
+	private:
+		int size;
 	public:
 		NodePtr head = NULL;
 		
@@ -28,9 +30,7 @@ class LinkedList {
 		int peek(int index);
 		void printList(void);
 
-		LinkedList();		
-	private:
-		int size;
+		LinkedList();
 };
 
 #endif

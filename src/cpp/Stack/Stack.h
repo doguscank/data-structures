@@ -8,14 +8,14 @@ using namespace std;
 #define STACK_H
 
 class Stack : public LinkedList{
+	private:
+		int size;
 	public:
 		void push(int value);
 		void pop(void);
 		void printList(void);
 		
-		Stack();	
-	private:
-		int size;
+		Stack();
 };
 
 #endif
