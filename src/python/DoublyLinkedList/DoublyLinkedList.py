@@ -4,7 +4,7 @@ class Node():
 		self.prev_node = prev_node #Previous node
 		self.next_node = next_node #Next node
 
-class DoublyLinkedList():
+class DoublyLinkedListInt():
 	def __init__(self):
 		self.size = 0
 		self.head = None #First node
@@ -150,7 +150,7 @@ class DoublyLinkedList():
 		return seperator.join(str(i) for i in str_list)
 
 if __name__ == '__main__':
-	dll = DoublyLinkedList()
+	dll = DoublyLinkedListInt()
 	dll.add(1)	
 	dll.add(2)
 	dll.add(3)

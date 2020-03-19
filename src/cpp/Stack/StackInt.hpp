@@ -1,13 +1,13 @@
 #include <iostream>
 #include <stdlib.h>
-#include "../LinkedList/LinkedList.h"
+#include "../LinkedList/LinkedListInt.hpp"
 
 using namespace std;
 
-#ifndef STACK_H
-#define STACK_H
+#ifndef STACKINT_H
+#define STACKINT_H
 
-class Stack : public LinkedList{
+class StackInt : public LinkedListInt{
 	private:
 		int size;
 	public:
@@ -15,7 +15,7 @@ class Stack : public LinkedList{
 		void pop(void);
 		void printList(void);
 		
-		Stack();
+		StackInt();
 };
 
 #endif

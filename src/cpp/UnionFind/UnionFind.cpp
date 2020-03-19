@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
-#include "UnionFind.h"
+#include "UnionFind.hpp"
 
 UnionFind::UnionFind(int size){
 	if(size <= 0) throw "Size can not be <= 0";

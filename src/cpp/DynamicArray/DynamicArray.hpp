@@ -7,7 +7,7 @@ using namespace std;
 #define DYNARRAY_H
 
 template <class T>
-class DynamicArrayTemplate{
+class DynamicArray{
 	private:
 		int capacity;
 		int size;
@@ -28,7 +28,7 @@ class DynamicArrayTemplate{
 		T get(int index);
 		void set(int index, T newValue);
 		
-		DynamicArrayTemplate(int capacity);
+		DynamicArray(int capacity);
 };
 
 #endif

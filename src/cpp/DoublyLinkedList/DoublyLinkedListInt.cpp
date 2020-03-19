@@ -1,19 +1,18 @@
 #include <iostream>
 #include <stdlib.h>
-#include "LinkedList.hpp"
+#include "DoublyLinkedListInt.hpp"
 
 using namespace std;
 
-template <typename T>
-LinkedList<T>::LinkedList(void){
+DoublyLinkedListInt::DoublyLinkedListInt(){
 	this->size = 0;
 }
 
 //Add node to end of the list
-template <typename T>
-void LinkedList<T>::addNode(T value){
+void DoublyLinkedListInt::addNode(int value){
 	NodePtr newNode = (NodePtr)malloc(sizeof(Node));
 	newNode->value = value;
+	newNode->previous = NULL;
 	newNode->next = NULL;
 	
 	size++;
@@ -29,18 +28,23 @@ void LinkedList<T>::addNode(T value){
 		current = current->next;
 	}
 	
+	newNode->previous = current;
 	current->next = newNode;
 }
 
 //Delete node with given value
-template <typename T>
-bool LinkedList<T>::deleteNode(T value){
+bool DoublyLinkedListInt::deleteNode(int value){
 	NodePtr current = this->head;
 	NodePtr previous;
 	
 	while(current != NULL){
 		if(current->value == value){
-			previous->next = current->next;			
+			previous->next = current->next;
+			
+			if(current->next != NULL){
+				current->next->previous = previous;
+			}
+					
 			free(current);
 			
 			size--;
@@ -56,16 +60,14 @@ bool LinkedList<T>::deleteNode(T value){
 }
 
 //Delete last node in the list
-template <typename T>
-bool LinkedList<T>::deleteNode(void){
+bool DoublyLinkedListInt::deleteNode(){
 	NodePtr current = this->head;
+	NodePtr previous;
 	
 	if(current == NULL){
 		cout << "The list is empty!";
 		return false;
 	}
-	
-	NodePtr previous;
 	
 	while(current->next != NULL){
 		previous = current;
@@ -74,14 +76,12 @@ bool LinkedList<T>::deleteNode(void){
 	
 	previous->next = current->next;
 	free(current);
-	size--;
 	
 	return true;
 }
 
 //Return index of node with given value
-template <typename T>
-int LinkedList<T>::indexOf(T value){
+int DoublyLinkedListInt::indexOf(int value){
 	NodePtr current = this->head;
 	int i = 0;
 	
@@ -98,26 +98,22 @@ int LinkedList<T>::indexOf(T value){
 }
 
 //Return size of the list
-template <typename T>
-int LinkedList<T>::getSize(void){
+int DoublyLinkedListInt::getSize(void){
 	return size;
 }
 
 //Check if the list contains given value
-template <typename T>
-bool LinkedList<T>::contains(T value){
+bool DoublyLinkedListInt::contains(int value){
 	return this->indexOf(value) != -1;
 }
 
 //Check if the list contains any node
-template <typename T>
-bool LinkedList<T>::isEmpty(void){
-	return LinkedList::getSize() == 0;
+bool DoublyLinkedListInt::isEmpty(void){
+	return this->getSize() == 0;
 }
 
 //Return element in given index if exists
-template <typename T>
-int LinkedList<T>::peek(int index){
+int DoublyLinkedListInt::peek(int index){
 	NodePtr current = this->head;
 	int i = 0;
 	
@@ -125,7 +121,8 @@ int LinkedList<T>::peek(int index){
 		current = current->next;
 		
 		if(current == NULL){
-			throw "Invalid index!";
+			cout << "Invalid index!";
+			return NULL;
 		}
 		
 		i++;
@@ -134,19 +131,32 @@ int LinkedList<T>::peek(int index){
 	return current->value;
 }
 
-template <typename T>
-void LinkedList<T>::printList(void){
+void DoublyLinkedListInt::printList(void){
 	NodePtr current = this->head;
+	NodePtr last;
 		
 	if(this->isEmpty()){
 		cout << "The list is empty.";
 		return;
 	}
 	
+	cout << "Printing list from left to right:" << endl << endl;
+	
 	while(current != NULL){
 		cout << current->value << " -> ";
+		last = current;
 		current = current->next;
 	}
 	
 	cout << "NULL" << endl << endl;
+	
+	cout << "Printing list from right to left:" << endl << endl;
+	cout << "NULL";
+	
+	while(last != NULL){
+		cout << " -> " << last->value;
+		last = last->previous;
+	}	
+	
+	cout << endl << endl;
 }

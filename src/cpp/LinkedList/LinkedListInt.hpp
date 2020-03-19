@@ -3,19 +3,19 @@
 
 using namespace std;
 
-#ifndef DLINKEDLIST_H
-#define DLINKLIST_H
+#ifndef LINKEDLISTINT_H
+#define LINKEDLISTINT_H
 
-struct Node {
-	int value;
-	struct Node * previous;
-	struct Node * next;
+class Node {
+	public:
+		int value;
+		Node * next;
 };
 
-typedef struct Node Node;
-typedef struct Node * NodePtr;
+typedef Node Node;
+typedef Node * NodePtr;
 
-class DoublyLinkedList{
+class LinkedListInt {
 	private:
 		int size;
 	public:
@@ -30,8 +30,8 @@ class DoublyLinkedList{
 		bool isEmpty(void);
 		int peek(int index);
 		void printList(void);
-		
-		DoublyLinkedList();
+
+		LinkedListInt(void);
 };
 
 #endif

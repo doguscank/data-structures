@@ -1,26 +1,29 @@
 #include <iostream>
 #include <stdlib.h>
-#include "DynamicArray.h"
+#include "DynamicArray.hpp"
 
 using namespace std;
 
-DynamicArray::DynamicArray(int capacity){
+template <typename T>
+DynamicArray<T>::DynamicArray(int capacity){
 	if(capacity < 0) throw "Invalid array capacity!";
 	
 	this->capacity = capacity;
 	this->size = 0;
-}
+}	
 
-void DynamicArray::expand(void){
+template <typename T>
+void DynamicArray<T>::expand(void){
 	if(this->capacity == 0) this->capacity = 1;
 	else this->capacity *= 2;
 	
-	realloc(this->arr, sizeof(int) * this->capacity);
+	realloc(this->arr, sizeof(T) * this->capacity);
 }
 
-void DynamicArray::append(int value){
+template <typename T>
+void DynamicArray<T>::append(T value){
 	if(this->size == 0){
-		this->arr = (int *)malloc(sizeof(int) * this->capacity);
+		this->arr = (T *)malloc(sizeof(T) * this->capacity);
 	}
 	
 	if(this->size + 1 >= this->capacity) this->expand();
@@ -29,7 +32,8 @@ void DynamicArray::append(int value){
 	this->size++;
 }
 
-int DynamicArray::indexOf(int value){
+template <typename T>
+int DynamicArray<T>::indexOf(T value){
 	int i;
 	
 	for(i = 0; i < this->size; i++){
@@ -39,7 +43,8 @@ int DynamicArray::indexOf(int value){
 	return -1;
 }
 
-bool DynamicArray::remove(int value){
+template <typename T>
+bool DynamicArray<T>::remove(T value){
 	int i;
 	int limit = this->indexOf(value);
 	
@@ -57,7 +62,8 @@ bool DynamicArray::remove(int value){
 	return true;
 }
 
-bool DynamicArray::remove(void){
+template <typename T>
+bool DynamicArray<T>::remove(void){
 	if(this->isEmpty()){
 		cout << "The list is empty!" << endl;
 		return false;
@@ -68,7 +74,8 @@ bool DynamicArray::remove(void){
 	return true;
 }
 
-bool DynamicArray::removeAtIndex(int index){
+template <typename T>
+bool DynamicArray<T>::removeAtIndex(int index){
 	if(index >= this->size) return false;
 	
 	int i;
@@ -80,23 +87,28 @@ bool DynamicArray::removeAtIndex(int index){
 	return true;
 }
 
-bool DynamicArray::isEmpty(void){
+template <typename T>
+bool DynamicArray<T>::isEmpty(void){
 	return this->size == 0;
 }
 
-bool DynamicArray::contains(int value){
+template <typename T>
+bool DynamicArray<T>::contains(T value){
 	return this->indexOf(value) != -1;	
 }
 
-int DynamicArray::getCapacity(void){
+template <typename T>
+int DynamicArray<T>::getCapacity(void){
 	return this->capacity;
 }
 
-int DynamicArray::getSize(void){
+template <typename T>
+int DynamicArray<T>::getLength(void){
 	return this->size;
 }
 
-void DynamicArray::printList(void){
+template <typename T>
+void DynamicArray<T>::printList(void){
 	int i;
 	
 	for(i = 0; i < this->size; i++){
@@ -106,7 +118,8 @@ void DynamicArray::printList(void){
 	cout << endl << endl;
 }
 
-int DynamicArray::get(int index){
+template <typename T>
+T DynamicArray<T>::get(int index){
 	if(index < 0 || index >= this->size){
 		cout << "Invalid index!";
 		return NULL;
@@ -115,7 +128,8 @@ int DynamicArray::get(int index){
 	return this->arr[index];
 }
 
-void DynamicArray::set(int index, int newValue){
+template <typename T>
+void DynamicArray<T>::set(int index, T newValue){
 	if(index < 0 || index >= this->size){
 		cout << "Invalid index!";
 		return;

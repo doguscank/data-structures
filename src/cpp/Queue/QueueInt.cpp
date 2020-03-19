@@ -1,25 +1,25 @@
 #include <iostream>
 #include <stdlib.h>
-#include "Queue.h"
-#include "../LinkedList/LinkedList.h"
+#include "QueueInt.hpp"
+#include "../LinkedList/LinkedListInt.hpp"
 
 using namespace std;
 
-Queue::Queue(){
+QueueInt::QueueInt(){
 	this->size = 0;
 }
 
-//Add node to end of the queue
-void Queue::offer(int value){
+//Add node to end of the QueueInt
+void QueueInt::offer(int value){
 	this->addNode(value);
 }
 
-//Delete first node in the queue
-bool Queue::poll(){
+//Delete first node in the QueueInt
+bool QueueInt::poll(){
 	NodePtr current = this->head;
 	
 	if(current == NULL){
-		cout << "The queue is empty!" << endl << endl;
+		cout << "The QueueInt is empty!" << endl << endl;
 		return false;
 	}
 	

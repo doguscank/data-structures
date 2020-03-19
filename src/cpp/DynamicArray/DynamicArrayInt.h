@@ -3,10 +3,10 @@
 
 using namespace std;
 
-#ifndef DYNARRAY_H
-#define DYNARRAY_H
+#ifndef DYNARRAYINT_H
+#define DYNARRAYINT_H
 
-class DynamicArray{
+class DynamicArrayInt{
 	private:
 		int capacity;
 		int size;
@@ -27,7 +27,7 @@ class DynamicArray{
 		int get(int index);
 		void set(int index, int newValue);
 		
-		DynamicArray(int capacity);
+		DynamicArrayInt(int capacity);
 };
 
 #endif
