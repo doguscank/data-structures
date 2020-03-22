@@ -1,9 +1,9 @@
+#ifndef BINARYHEAP_H
+#define BINARYHEAP_H
+
 #include <iostream>
 #include <stdlib.h>
 #include "./include/DynamicArrayInt.hpp"
-
-#ifndef BINARYHEAP_H
-#define BINARYHEAP_H
 
 class BinaryHeap{
 	private:

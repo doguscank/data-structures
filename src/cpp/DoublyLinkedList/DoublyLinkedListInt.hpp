@@ -1,8 +1,8 @@
-#include <iostream>
-#include <stdlib.h>
-
 #ifndef DLINKEDLISTINT_H
 #define DLINKEDLISTINT_H
+
+#include <iostream>
+#include <stdlib.h>
 
 class Node {
 	public:

@@ -1,3 +1,6 @@
+#ifndef UNIONFIND_H
+#define UNIONFIND_H
+
 #include <iostream>
 #include <stdlib.h>
 
@@ -17,3 +20,5 @@ class UnionFind{
 		
 		UnionFind(int size);
 };
+
+#endif

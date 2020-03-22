@@ -1,8 +1,8 @@
-#include <iostream>
-#include <stdlib.h>
-
 #ifndef LINKEDLISTINT_H
 #define LINKEDLISTINT_H
+
+#include <iostream>
+#include <stdlib.h>
 
 class Node {
 	public:

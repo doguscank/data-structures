@@ -1,9 +1,9 @@
+#ifndef QUEUEINT_H
+#define QUEUEINT_H
+
 #include <iostream>
 #include <stdlib.h>
 #include "./include/LinkedListInt.hpp"
-
-#ifndef QUEUEINT_H
-#define QUEUEINT_H
 
 class QueueInt : public LinkedListInt{
 	private:

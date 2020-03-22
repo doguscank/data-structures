@@ -1,9 +1,9 @@
+#ifndef STACKINT_H
+#define STACKINT_H
+
 #include <iostream>
 #include <stdlib.h>
 #include "./include/LinkedListInt.hpp"
-
-#ifndef STACKINT_H
-#define STACKINT_H
 
 class StackInt : public LinkedListInt{
 	private:

@@ -1,8 +1,8 @@
-#include <iostream>
-#include <stdlib.h>
-
 #ifndef DYNARRAYINT_H
 #define DYNARRAYINT_H
+
+#include <iostream>
+#include <stdlib.h>
 
 class DynamicArrayInt{
 	private:
