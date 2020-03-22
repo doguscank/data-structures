@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
+#include <string>
 #include "LinkedList.hpp"
 
 using namespace std;
@@ -117,7 +118,7 @@ bool LinkedList<T>::isEmpty(void){
 
 //Return element in given index if exists
 template <typename T>
-int LinkedList<T>::peek(int index){
+T LinkedList<T>::peek(int index){
 	NodePtr current = this->head;
 	int i = 0;
 	
@@ -150,3 +151,9 @@ void LinkedList<T>::printList(void){
 	
 	cout << "NULL" << endl << endl;
 }
+
+template class LinkedList<int>;
+template class LinkedList<char>;
+template class LinkedList<string>;
+template class LinkedList<double>;
+template class LinkedList<float>;

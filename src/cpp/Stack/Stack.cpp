@@ -1,26 +1,30 @@
 #include <iostream>
 #include <stdlib.h>
-#include "StackInt.hpp"
-#include "./include/LinkedListInt.hpp"
+#include "Stack.hpp"
+#include "./include/LinkedList.hpp"
 
 using namespace std;
 
-StackInt::StackInt(){
+template <typename T>
+Stack<T>::Stack(void){
 	this->size = 0;
 }
 
 //Adds an element to the top of stack
-void StackInt::push(int value){
+template <typename T>
+void Stack<T>::push(T value){
 	this->addNode(value);
 }
 
 //Removes the element on the top of stack
-void StackInt::pop(){
+template <typename T>
+void Stack<T>::pop(){
 	
 	this->deleteNode();
 }
 
-void StackInt::printList(void){
+template <typename T>
+void Stack<T>::printList(void){
 	NodePtr current = this->head;
 	
 	if(this->isEmpty()){

@@ -1,21 +1,24 @@
 #include <iostream>
 #include <stdlib.h>
-#include "QueueInt.hpp"
-#include "./include/LinkedListInt.hpp"
+#include "Queue.hpp"
+#include "./include/LinkedList.hpp"
 
 using namespace std;
 
-QueueInt::QueueInt(){
+template <typename T>
+Queue<T>::Queue(void){
 	this->size = 0;
 }
 
 //Add node to end of the QueueInt
-void QueueInt::offer(int value){
+template <typename T>
+void Queue<T>::offer(T value){
 	this->addNode(value);
 }
 
 //Delete first node in the QueueInt
-bool QueueInt::poll(){
+template <typename T>
+bool Queue<T>::poll(void){
 	NodePtr current = this->head;
 	
 	if(current == NULL){
@@ -29,8 +32,4 @@ bool QueueInt::poll(){
 	free(current);
 	
 	return true;
-}
-
-int main(){
-	QueueInt q;
 }

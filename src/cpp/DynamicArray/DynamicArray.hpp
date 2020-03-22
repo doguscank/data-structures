@@ -1,8 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
 
-using namespace std;
-
 #ifndef DYNARRAY_H
 #define DYNARRAY_H
 

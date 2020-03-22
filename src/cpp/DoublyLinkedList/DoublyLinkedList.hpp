@@ -1,18 +1,19 @@
 #include <iostream>
 #include <stdlib.h>
 
-#ifndef LINKEDLIST_H
-#define LINKEDLIST_H
+#ifndef DLINKEDLIST_H
+#define DLINKEDLIST_H
 
 template <typename T>
 class Node {
 	public:
 		T value;
+		Node * previous;
 		Node * next;
 };
 
 template <typename T>
-class LinkedList {
+class DoublyLinkedList{
 	private:
 		int size;
 	public:
@@ -28,10 +29,11 @@ class LinkedList {
 		int getSize(void);
 		bool contains(T value);
 		bool isEmpty(void);
-		T peek(int index);
+		int peek(int index);
 		void printList(void);
-
-		LinkedList(void);
+		
+		DoublyLinkedList(void);
 };
 
 #endif
+

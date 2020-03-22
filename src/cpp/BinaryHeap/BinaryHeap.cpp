@@ -1,25 +1,25 @@
 #include <iostream>
 #include <stdlib.h>
 #include "BinaryHeap.hpp"
-#include "../DynamicArray/DynamicArrayInt.hpp"
+#include "./include/DynamicArrayInt.hpp"
 
 #define MAX(i, j) i > j ? i : j
 
 BinaryHeap::BinaryHeap(void){
 	this->heapCapacity = 1;
 	this->heapSize = 0;
-	DynamicArray d = DynamicArray(this->heapCapacity);
+	DynamicArrayInt d = DynamicArrayInt(this->heapCapacity);
 	this->heap = &d;
 }
 
 BinaryHeap::BinaryHeap(int size){
 	this->heapCapacity = size;
 	this->heapSize = 0;
-	DynamicArray d = DynamicArray(this->heapCapacity);
+	DynamicArrayInt d = DynamicArrayInt(this->heapCapacity);
 	this->heap = &d;
 }
 
-BinaryHeap::BinaryHeap(DynamicArray * arr){
+BinaryHeap::BinaryHeap(DynamicArrayInt * arr){
 	this->heapCapacity = arr->getCapacity();
 	this->heapSize = arr->getSize();
 	heap = arr;
@@ -125,7 +125,7 @@ bool BinaryHeap::poll(void){
 void BinaryHeap::clear(void){
 	free(this->heap);
 	
-	DynamicArray d = DynamicArray(1);
+	DynamicArrayInt d = DynamicArrayInt(1);
 	
 	this->heap = &d;
 	this->heapCapacity = 1;

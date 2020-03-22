@@ -1,19 +1,18 @@
 #include <iostream>
 #include <stdlib.h>
 
-using namespace std;
-
 #ifndef DLINKEDLISTINT_H
 #define DLINKEDLISTINT_H
 
-struct Node {
-	int value;
-	struct Node * previous;
-	struct Node * next;
+class Node {
+	public:
+		int value;
+		Node * previous;
+		Node * next;
 };
 
-typedef struct Node Node;
-typedef struct Node * NodePtr;
+typedef Node Node;
+typedef Node * NodePtr;
 
 class DoublyLinkedListInt{
 	private:
@@ -31,7 +30,7 @@ class DoublyLinkedListInt{
 		int peek(int index);
 		void printList(void);
 		
-		DoublyLinkedListInt();
+		DoublyLinkedListInt(void);
 };
 
 #endif

@@ -1,15 +1,17 @@
 #include <iostream>
 #include <stdlib.h>
-#include "DoublyLinkedListInt.hpp"
+#include "DoublyLinkedList.hpp"
 
 using namespace std;
 
-DoublyLinkedListInt::DoublyLinkedListInt(void){
+template <typename T>
+DoublyLinkedList<T>::DoublyLinkedList(void){
 	this->size = 0;
 }
 
 //Add node to end of the list
-void DoublyLinkedListInt::addNode(int value){
+template <typename T>
+void DoublyLinkedList<T>::addNode(T value){
 	NodePtr newNode = (NodePtr)malloc(sizeof(Node));
 	newNode->value = value;
 	newNode->previous = NULL;
@@ -33,7 +35,8 @@ void DoublyLinkedListInt::addNode(int value){
 }
 
 //Delete node with given value
-bool DoublyLinkedListInt::deleteNode(int value){
+template <typename T>
+bool DoublyLinkedList<T>::deleteNode(T value){
 	NodePtr current = this->head;
 	NodePtr previous;
 	
@@ -60,7 +63,8 @@ bool DoublyLinkedListInt::deleteNode(int value){
 }
 
 //Delete last node in the list
-bool DoublyLinkedListInt::deleteNode(){
+template <typename T>
+bool DoublyLinkedList<T>::deleteNode(void){
 	NodePtr current = this->head;
 	NodePtr previous;
 	
@@ -81,7 +85,8 @@ bool DoublyLinkedListInt::deleteNode(){
 }
 
 //Return index of node with given value
-int DoublyLinkedListInt::indexOf(int value){
+template <typename T>
+int DoublyLinkedList<T>::indexOf(T value){
 	NodePtr current = this->head;
 	int i = 0;
 	
@@ -98,22 +103,26 @@ int DoublyLinkedListInt::indexOf(int value){
 }
 
 //Return size of the list
-int DoublyLinkedListInt::getSize(void){
+template <typename T>
+int DoublyLinkedList<T>::getSize(void){
 	return size;
 }
 
 //Check if the list contains given value
-bool DoublyLinkedListInt::contains(int value){
+template <typename T>
+bool DoublyLinkedList<T>::contains(T value){
 	return this->indexOf(value) != -1;
 }
 
 //Check if the list contains any node
-bool DoublyLinkedListInt::isEmpty(void){
+template <typename T>
+bool DoublyLinkedList<T>::isEmpty(void){
 	return this->getSize() == 0;
 }
 
 //Return element in given index if exists
-int DoublyLinkedListInt::peek(int index){
+template <typename T>
+int DoublyLinkedList<T>::peek(int index){
 	NodePtr current = this->head;
 	int i = 0;
 	
@@ -131,7 +140,8 @@ int DoublyLinkedListInt::peek(int index){
 	return current->value;
 }
 
-void DoublyLinkedListInt::printList(void){
+template <typename T>
+void DoublyLinkedList<T>::printList(void){
 	NodePtr current = this->head;
 	NodePtr last;
 		

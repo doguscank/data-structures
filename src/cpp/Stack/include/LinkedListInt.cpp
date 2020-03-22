@@ -1,18 +1,17 @@
 #include <iostream>
 #include <stdlib.h>
-#include "DoublyLinkedListInt.hpp"
+#include "LinkedListInt.hpp"
 
 using namespace std;
 
-DoublyLinkedListInt::DoublyLinkedListInt(void){
+LinkedListInt::LinkedListInt(void){
 	this->size = 0;
 }
 
 //Add node to end of the list
-void DoublyLinkedListInt::addNode(int value){
+void LinkedListInt::addNode(int value){
 	NodePtr newNode = (NodePtr)malloc(sizeof(Node));
 	newNode->value = value;
-	newNode->previous = NULL;
 	newNode->next = NULL;
 	
 	size++;
@@ -28,23 +27,17 @@ void DoublyLinkedListInt::addNode(int value){
 		current = current->next;
 	}
 	
-	newNode->previous = current;
 	current->next = newNode;
 }
 
 //Delete node with given value
-bool DoublyLinkedListInt::deleteNode(int value){
+bool LinkedListInt::deleteNode(int value){
 	NodePtr current = this->head;
 	NodePtr previous;
 	
 	while(current != NULL){
 		if(current->value == value){
-			previous->next = current->next;
-			
-			if(current->next != NULL){
-				current->next->previous = previous;
-			}
-					
+			previous->next = current->next;			
 			free(current);
 			
 			size--;
@@ -60,14 +53,15 @@ bool DoublyLinkedListInt::deleteNode(int value){
 }
 
 //Delete last node in the list
-bool DoublyLinkedListInt::deleteNode(){
+bool LinkedListInt::deleteNode(){
 	NodePtr current = this->head;
-	NodePtr previous;
 	
 	if(current == NULL){
 		cout << "The list is empty!";
 		return false;
 	}
+	
+	NodePtr previous;
 	
 	while(current->next != NULL){
 		previous = current;
@@ -76,12 +70,13 @@ bool DoublyLinkedListInt::deleteNode(){
 	
 	previous->next = current->next;
 	free(current);
+	size--;
 	
 	return true;
 }
 
 //Return index of node with given value
-int DoublyLinkedListInt::indexOf(int value){
+int LinkedListInt::indexOf(int value){
 	NodePtr current = this->head;
 	int i = 0;
 	
@@ -98,22 +93,22 @@ int DoublyLinkedListInt::indexOf(int value){
 }
 
 //Return size of the list
-int DoublyLinkedListInt::getSize(void){
+int LinkedListInt::getSize(void){
 	return size;
 }
 
 //Check if the list contains given value
-bool DoublyLinkedListInt::contains(int value){
+bool LinkedListInt::contains(int value){
 	return this->indexOf(value) != -1;
 }
 
 //Check if the list contains any node
-bool DoublyLinkedListInt::isEmpty(void){
-	return this->getSize() == 0;
+bool LinkedListInt::isEmpty(void){
+	return LinkedListInt::getSize() == 0;
 }
 
 //Return element in given index if exists
-int DoublyLinkedListInt::peek(int index){
+int LinkedListInt::peek(int index){
 	NodePtr current = this->head;
 	int i = 0;
 	
@@ -121,8 +116,7 @@ int DoublyLinkedListInt::peek(int index){
 		current = current->next;
 		
 		if(current == NULL){
-			cout << "Invalid index!";
-			return NULL;
+			throw "Invalid index!";
 		}
 		
 		i++;
@@ -131,32 +125,18 @@ int DoublyLinkedListInt::peek(int index){
 	return current->value;
 }
 
-void DoublyLinkedListInt::printList(void){
+void LinkedListInt::printList(void){
 	NodePtr current = this->head;
-	NodePtr last;
 		
 	if(this->isEmpty()){
 		cout << "The list is empty.";
 		return;
 	}
 	
-	cout << "Printing list from left to right:" << endl << endl;
-	
 	while(current != NULL){
 		cout << current->value << " -> ";
-		last = current;
 		current = current->next;
 	}
 	
 	cout << "NULL" << endl << endl;
-	
-	cout << "Printing list from right to left:" << endl << endl;
-	cout << "NULL";
-	
-	while(last != NULL){
-		cout << " -> " << last->value;
-		last = last->previous;
-	}	
-	
-	cout << endl << endl;
 }
