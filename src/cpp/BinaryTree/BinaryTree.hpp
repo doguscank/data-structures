@@ -20,6 +20,7 @@ class Node{
 		Node * getRight(void);
 		
 		//Setters
+		void setValue(T value);
 		void setParent(Node * parent);
 		void setLeft(Node * left);
 		void setRight(Node * right);
@@ -37,19 +38,25 @@ class BinaryTree{
 		//Variables
 		int size;
 		Node<T> * root;
+		void swap(Node<T> * n1, Node<T> * n2);
+		void swap(int index1, int index2);
 	public:
 		//Getters
 		int getSize(void);
-		Node<T> * getHead(void);
+		Node<T> * getRoot(void);
 		
 		//Functions
 		Node<T> * search(Node<T> * root, int startIndex, int targetIndex);
+		Node<T> * search(Node<T> * root, T key);
 		Node<T> * getNode(int index);
+		Node<T> * findNode(T value);
 		void addNode(T value);
 		void addNode(Node<T> * node);
 		bool removeNode(T value);
 		bool removeNode(Node<T> * node);
 		bool removeNode(void);
+		bool contains(T value);
+		void printTree(void);
 		
 		//Constructors
 		BinaryTree(void);
