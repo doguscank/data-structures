@@ -245,30 +245,3 @@ void BinaryTree<T>::printTree(void){
 	
 	delete(node);
 }
-
-int main(){
-	
-	BinaryTree<int> b = BinaryTree<int>();
-	b.addNode(0);
-	b.addNode(1);
-	b.addNode(2);
-	b.addNode(3);
-	b.addNode(4);
-	b.addNode(5);
-	b.addNode(6);
-	b.addNode(7);
-	b.addNode(8);
-	b.addNode(9);
-	
-	b.printTree();
-	
-	cout << "After removal" << endl << endl;
-	
-	bool result = b.removeNode(1);
-	
-	cout << "result: " << result << endl << endl;
-	
-	b.printTree();
-	
-	return 1;
-}
