@@ -4,20 +4,20 @@
 #include <iostream>
 #include <stdlib.h>
 
-class Node {
+class LLNode {
 	public:
 		int value;
-		Node * next;
+		LLNode * next;
 };
 
-typedef Node Node;
-typedef Node * NodePtr;
+typedef LLNode LLNode;
+typedef LLNode * LLNodePtr;
 
 class LinkedListInt {
 	private:
 		int size;
 	public:
-		NodePtr head = NULL;
+		LLNodePtr head = NULL;
 		
 		void addNode(int value);
 		bool deleteNode(int value);

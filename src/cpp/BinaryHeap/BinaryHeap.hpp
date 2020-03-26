@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include "./include/DynamicArrayInt.hpp"
 
+#define MAX(i, j) i > j ? i : j
+
 class BinaryHeap{
 	private:
 		int heapCapacity; //Capacity of heap

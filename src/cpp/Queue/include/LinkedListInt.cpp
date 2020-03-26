@@ -10,7 +10,7 @@ LinkedListInt::LinkedListInt(void){
 
 //Add node to end of the list
 void LinkedListInt::addNode(int value){
-	NodePtr newNode = (NodePtr)malloc(sizeof(Node));
+	LLNodePtr newNode = (LLNodePtr)malloc(sizeof(LLNode));
 	newNode->value = value;
 	newNode->next = NULL;
 	
@@ -21,7 +21,7 @@ void LinkedListInt::addNode(int value){
 		return;
 	}
 		
-	NodePtr current = this->head;
+	LLNodePtr current = this->head;
 	
 	while(current->next != NULL){
 		current = current->next;
@@ -32,8 +32,8 @@ void LinkedListInt::addNode(int value){
 
 //Delete node with given value
 bool LinkedListInt::deleteNode(int value){
-	NodePtr current = this->head;
-	NodePtr previous;
+	LLNodePtr current = this->head;
+	LLNodePtr previous;
 	
 	while(current != NULL){
 		if(current->value == value){
@@ -54,14 +54,14 @@ bool LinkedListInt::deleteNode(int value){
 
 //Delete last node in the list
 bool LinkedListInt::deleteNode(){
-	NodePtr current = this->head;
+	LLNodePtr current = this->head;
 	
 	if(current == NULL){
 		cout << "The list is empty!";
 		return false;
 	}
 	
-	NodePtr previous;
+	LLNodePtr previous;
 	
 	while(current->next != NULL){
 		previous = current;
@@ -77,7 +77,7 @@ bool LinkedListInt::deleteNode(){
 
 //Return index of node with given value
 int LinkedListInt::indexOf(int value){
-	NodePtr current = this->head;
+	LLNodePtr current = this->head;
 	int i = 0;
 	
 	while(current != NULL){
@@ -109,7 +109,7 @@ bool LinkedListInt::isEmpty(void){
 
 //Return element in given index if exists
 int LinkedListInt::peek(int index){
-	NodePtr current = this->head;
+	LLNodePtr current = this->head;
 	int i = 0;
 	
 	while(i < index){
@@ -126,7 +126,7 @@ int LinkedListInt::peek(int index){
 }
 
 void LinkedListInt::printList(void){
-	NodePtr current = this->head;
+	LLNodePtr current = this->head;
 		
 	if(this->isEmpty()){
 		cout << "The list is empty.";

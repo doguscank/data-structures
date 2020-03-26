@@ -7,10 +7,10 @@
 using namespace std;
 
 template <typename T>
-class Node {
+class LLNode {
 	public:
 		T value;
-		Node * next;
+		LLNode * next;
 };
 
 template <typename T>
@@ -18,10 +18,10 @@ class LinkedList {
 	private:
 		int size;
 	public:
-		typedef Node<T> Node;
-		typedef Node * NodePtr;
+		typedef LLNode<T> LLNode;
+		typedef LLNode * LLNodePtr;
 		
-		NodePtr head = NULL;
+		LLNodePtr head = NULL;
 		
 		void addNode(T value);
 		bool deleteNode(T value);
@@ -44,7 +44,7 @@ LinkedList<T>::LinkedList(void){
 //Add node to end of the list
 template <typename T>
 void LinkedList<T>::addNode(T value){
-	NodePtr newNode = (NodePtr)malloc(sizeof(Node));
+	LLNodePtr newNode = (LLNodePtr)malloc(sizeof(LLNode));
 	newNode->value = value;
 	newNode->next = NULL;
 	
@@ -55,7 +55,7 @@ void LinkedList<T>::addNode(T value){
 		return;
 	}
 		
-	NodePtr current = this->head;
+	LLNodePtr current = this->head;
 	
 	while(current->next != NULL){
 		current = current->next;
@@ -67,8 +67,8 @@ void LinkedList<T>::addNode(T value){
 //Delete node with given value
 template <typename T>
 bool LinkedList<T>::deleteNode(T value){
-	NodePtr current = this->head;
-	NodePtr previous;
+	LLNodePtr current = this->head;
+	LLNodePtr previous;
 	
 	while(current != NULL){
 		if(current->value == value){
@@ -90,14 +90,14 @@ bool LinkedList<T>::deleteNode(T value){
 //Delete last node in the list
 template <typename T>
 bool LinkedList<T>::deleteNode(void){
-	NodePtr current = this->head;
+	LLNodePtr current = this->head;
 	
 	if(current == NULL){
 		cout << "The list is empty!";
 		return false;
 	}
 	
-	NodePtr previous;
+	LLNodePtr previous;
 	
 	while(current->next != NULL){
 		previous = current;
@@ -114,7 +114,7 @@ bool LinkedList<T>::deleteNode(void){
 //Return index of node with given value
 template <typename T>
 int LinkedList<T>::indexOf(T value){
-	NodePtr current = this->head;
+	LLNodePtr current = this->head;
 	int i = 0;
 	
 	while(current != NULL){
@@ -150,7 +150,7 @@ bool LinkedList<T>::isEmpty(void){
 //Return element in given index if exists
 template <typename T>
 T LinkedList<T>::peek(int index){
-	NodePtr current = this->head;
+	LLNodePtr current = this->head;
 	int i = 0;
 	
 	while(i < index){
@@ -168,7 +168,7 @@ T LinkedList<T>::peek(int index){
 
 template <typename T>
 void LinkedList<T>::printList(void){
-	NodePtr current = this->head;
+	LLNodePtr current = this->head;
 		
 	if(this->isEmpty()){
 		cout << "The list is empty.";

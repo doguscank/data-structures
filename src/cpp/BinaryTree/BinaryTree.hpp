@@ -30,7 +30,6 @@ class Node{
 		//Constructors
 		Node(T value);
 		Node(T value, Node * parent);
-		Node(T value, Node * parent, Node * left);
 		Node(T value, Node * parent, Node * left, Node * right);
 };
 
@@ -40,18 +39,20 @@ class BinaryTree{
 		//Variables
 		int size;
 		Node<T> * root;
+
+		//Functions
 		void swap(Node<T> * n1, Node<T> * n2);
 		void swap(int index1, int index2);
+		Node<T> * search(Node<T> * root, int startIndex, int targetIndex);
+		Node<T> * search(Node<T> * root, T key);
+		Node<T> * getNode(int index);
+		Node<T> * findNode(T value);
 	public:
 		//Getters
 		int getSize(void);
 		Node<T> * getRoot(void);
 		
 		//Functions
-		Node<T> * search(Node<T> * root, int startIndex, int targetIndex);
-		Node<T> * search(Node<T> * root, T key);
-		Node<T> * getNode(int index);
-		Node<T> * findNode(T value);
 		void addNode(T value);
 		void addNode(Node<T> * node);
 		bool removeNode(T value);
@@ -80,14 +81,6 @@ Node<T>::Node(T value, Node * parent){
 	this->value = value;
 	this->parent = parent;
 	this->left = NULL;
-	this->right = NULL;
-}
-
-template <typename T>
-Node<T>::Node(T value, Node * parent, Node * left){
-	this->value = value;
-	this->parent = parent;
-	this->left = left;
 	this->right = NULL;
 }
 
@@ -167,11 +160,10 @@ Node<T> * BinaryTree<T>::getRoot(void){
 }
 
 //Functions
+//Private ones
 template <typename T>
 void BinaryTree<T>::swap(Node<T> * n1, Node<T> * n2){
 	if(n1 == NULL || n2 == NULL) return;
-	
-	cout << "swappy" << endl;
 	
 	T temp = n1->getValue();
 	n1->setValue(n2->getValue());
@@ -224,6 +216,7 @@ Node<T> * BinaryTree<T>::findNode(T value){
 	return this->search(this->root, value);
 }
 
+//Public ones
 template <typename T>
 void BinaryTree<T>::addNode(T value){
 	Node<T> * node = (Node<T> *)malloc(sizeof(Node<T>));

@@ -3,8 +3,6 @@
 #include "BinaryHeap.hpp"
 #include "./include/DynamicArrayInt.hpp"
 
-#define MAX(i, j) i > j ? i : j
-
 BinaryHeap::BinaryHeap(void){
 	this->heapCapacity = 1;
 	this->heapSize = 0;

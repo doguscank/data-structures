@@ -13,7 +13,7 @@ class StackInt : public LinkedListInt{
 		void pop(void);
 		void printList(void);
 		
-		StackInt();
+		StackInt(void);
 };
 
 #endif

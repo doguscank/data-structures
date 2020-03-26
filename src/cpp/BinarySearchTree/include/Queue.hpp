@@ -3,11 +3,11 @@
 
 #include <iostream>
 #include <stdlib.h>
-#include "./include/LinkedList.hpp"
+#include "LinkedList.hpp"
 
 using namespace std;
 
-template <typename T>
+template <class T>
 class Queue : public LinkedList<T>{
 	private:
 		int size;

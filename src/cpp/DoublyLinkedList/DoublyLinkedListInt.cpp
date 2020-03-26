@@ -10,7 +10,7 @@ DoublyLinkedListInt::DoublyLinkedListInt(void){
 
 //Add node to end of the list
 void DoublyLinkedListInt::addNode(int value){
-	NodePtr newNode = (NodePtr)malloc(sizeof(Node));
+	DLLNodePtr newNode = (DLLNodePtr)malloc(sizeof(DLLNode));
 	newNode->value = value;
 	newNode->previous = NULL;
 	newNode->next = NULL;
@@ -22,7 +22,7 @@ void DoublyLinkedListInt::addNode(int value){
 		return;
 	}
 		
-	NodePtr current = this->head;
+	DLLNodePtr current = this->head;
 	
 	while(current->next != NULL){
 		current = current->next;
@@ -34,8 +34,8 @@ void DoublyLinkedListInt::addNode(int value){
 
 //Delete node with given value
 bool DoublyLinkedListInt::deleteNode(int value){
-	NodePtr current = this->head;
-	NodePtr previous;
+	DLLNodePtr current = this->head;
+	DLLNodePtr previous;
 	
 	while(current != NULL){
 		if(current->value == value){
@@ -60,9 +60,9 @@ bool DoublyLinkedListInt::deleteNode(int value){
 }
 
 //Delete last node in the list
-bool DoublyLinkedListInt::deleteNode(){
-	NodePtr current = this->head;
-	NodePtr previous;
+bool DoublyLinkedListInt::deleteNode(void){
+	DLLNodePtr current = this->head;
+	DLLNodePtr previous;
 	
 	if(current == NULL){
 		cout << "The list is empty!";
@@ -82,7 +82,7 @@ bool DoublyLinkedListInt::deleteNode(){
 
 //Return index of node with given value
 int DoublyLinkedListInt::indexOf(int value){
-	NodePtr current = this->head;
+	DLLNodePtr current = this->head;
 	int i = 0;
 	
 	while(current != NULL){
@@ -114,7 +114,7 @@ bool DoublyLinkedListInt::isEmpty(void){
 
 //Return element in given index if exists
 int DoublyLinkedListInt::peek(int index){
-	NodePtr current = this->head;
+	DLLNodePtr current = this->head;
 	int i = 0;
 	
 	while(i < index){
@@ -132,8 +132,8 @@ int DoublyLinkedListInt::peek(int index){
 }
 
 void DoublyLinkedListInt::printList(void){
-	NodePtr current = this->head;
-	NodePtr last;
+	DLLNodePtr current = this->head;
+	DLLNodePtr last;
 		
 	if(this->isEmpty()){
 		cout << "The list is empty.";

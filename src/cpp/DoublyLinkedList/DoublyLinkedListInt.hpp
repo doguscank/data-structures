@@ -4,25 +4,24 @@
 #include <iostream>
 #include <stdlib.h>
 
-class Node {
+class DLLNode {
 	public:
 		int value;
-		Node * previous;
-		Node * next;
+		DLLNode * previous;
+		DLLNode * next;
 };
 
-typedef Node Node;
-typedef Node * NodePtr;
+typedef DLLNode * DLLNodePtr;
 
 class DoublyLinkedListInt{
 	private:
 		int size;
 	public:
-		NodePtr head = NULL;
+		DLLNodePtr head = NULL;
 		
 		void addNode(int value);
 		bool deleteNode(int value);
-		bool deleteNode();
+		bool deleteNode(void);
 		int indexOf(int value);
 		int getSize(void);
 		bool contains(int value);

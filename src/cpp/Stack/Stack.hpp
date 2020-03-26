@@ -12,8 +12,8 @@ class Stack : public LinkedList<T>{
 	private:
 		int size;
 	public:
-		typedef typename LinkedList<T>::Node Node;
-		typedef typename LinkedList<T>::NodePtr NodePtr;
+		typedef typename LinkedList<T>::LLNode Node;
+		typedef typename LinkedList<T>::LLNodePtr NodePtr;
 		
 		void push(T value);
 		void pop(void);
@@ -31,18 +31,19 @@ Stack<T>::Stack(void){
 template <typename T>
 void Stack<T>::push(T value){
 	this->addNode(value);
+	this->size++;
 }
 
 //Removes the element on the top of stack
 template <typename T>
-void Stack<T>::pop(){
-	
-	this->deleteNode();
+void Stack<T>::pop(void){
+	bool result = this->deleteNode();
+	if(result) this->size--;
 }
 
 template <typename T>
 void Stack<T>::printList(void){
-	NodePtr current = this->head;
+	LLNodePtr current = this->head;
 	
 	if(this->isEmpty()){
 		cout << "The list is empty.";

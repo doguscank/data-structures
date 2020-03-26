@@ -5,23 +5,24 @@
 
 using namespace std;
 
-StackInt::StackInt(){
+StackInt::StackInt(void){
 	this->size = 0;
 }
 
 //Adds an element to the top of stack
 void StackInt::push(int value){
 	this->addNode(value);
+	this->size++;
 }
 
 //Removes the element on the top of stack
-void StackInt::pop(){
-	
-	this->deleteNode();
+void StackInt::pop(){	
+	bool result = this->deleteNode();
+	if(result) this->size--;
 }
 
 void StackInt::printList(void){
-	NodePtr current = this->head;
+	LLNodePtr current = this->head;
 	
 	if(this->isEmpty()){
 		cout << "The list is empty.";
