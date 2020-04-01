@@ -44,7 +44,7 @@ LinkedList<T>::LinkedList(void){
 //Add node to end of the list
 template <typename T>
 void LinkedList<T>::addNode(T value){
-	LLNodePtr newNode = (LLNodePtr)malloc(sizeof(Node));
+	LLNodePtr newNode = (LLNodePtr)malloc(sizeof(LLNode));
 	newNode->value = value;
 	newNode->next = NULL;
 	

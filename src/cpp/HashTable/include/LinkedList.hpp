@@ -26,6 +26,7 @@ class LinkedList {
 		void addNode(T value);
 		bool deleteNode(T value);
 		bool deleteNode(void);
+		bool deleteAtIndex(int index);
 		int indexOf(T value);
 		int getSize(void);
 		bool contains(T value);
@@ -111,6 +112,31 @@ bool LinkedList<T>::deleteNode(void){
 	return true;
 }
 
+template <typename T>
+bool LinkedList<T>::deleteAtIndex(int index){
+	if(index >= this->size) return false;
+	
+	if(index == 0){
+		this->head = this->head->next;
+		this->size--;
+		return true;
+	}
+	
+	LLNodePtr current = this->head;
+	LLNodePtr previous = this->head;
+	
+	for(int i = 0; i < index - 1; i++){
+		previous = current;
+		current = current->next;	
+	}
+	
+	previous->next = current->next;
+	free(current);
+	this->size--;
+	
+	return true;
+}
+
 //Return index of node with given value
 template <typename T>
 int LinkedList<T>::indexOf(T value){
@@ -150,7 +176,9 @@ bool LinkedList<T>::isEmpty(void){
 //Return element in given index if exists
 template <typename T>
 T LinkedList<T>::peek(int index){
-	LLNodePtr current = this->head;
+	if(this->head == NULL) return NULL;
+	
+	LLNodePtr current = this->head;	
 	int i = 0;
 	
 	while(i < index){
