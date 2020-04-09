@@ -13,7 +13,7 @@
 using namespace std;
 
 template <typename K, typename V>
-class HashTable{
+class HashTableOpenAddressing{
 	private:
 		//Variables
 		int capacity;
@@ -61,14 +61,14 @@ class HashTable{
 		void printTable(void);
 		
 		//Constructors
-		HashTable(int capacity, float loadFactor);
-		HashTable(int capacity) : HashTable(capacity, DEFAULT_LOAD_FACTOR){};
-		HashTable(void) : HashTable(DEFAULT_CAPACITY, DEFAULT_LOAD_FACTOR){};
+		HashTableOpenAddressing(int capacity, float loadFactor);
+		HashTableOpenAddressing(int capacity) : HashTableOpenAddressing(capacity, DEFAULT_LOAD_FACTOR){};
+		HashTableOpenAddressing(void) : HashTableOpenAddressing(DEFAULT_CAPACITY, DEFAULT_LOAD_FACTOR){};
 };
 
 //Constructors
 template <typename K, typename V>
-HashTable<K, V>::HashTable(int capacity, float loadFactor){
+HashTableOpenAddressing<K, V>::HashTableOpenAddressing(int capacity, float loadFactor){
 	if(capacity < DEFAULT_CAPACITY) capacity = DEFAULT_CAPACITY;
 	this->capacity = capacity;
 	this->size = this->usedBuckets = 0;
@@ -85,7 +85,7 @@ HashTable<K, V>::HashTable(int capacity, float loadFactor){
 
 //Getters
 template <typename K, typename V>
-V * HashTable<K, V>::getValue(K * key){
+V * HashTableOpenAddressing<K, V>::getValue(K * key){
 	const int offset = this->normalizeIndex(getHash(key));
 	
 	for(int i = offset, x = 1, j = -1; ; i = this->normalizeIndex(offset + this->probe(x++))){
@@ -96,43 +96,43 @@ V * HashTable<K, V>::getValue(K * key){
 }
 
 template <typename K, typename V>
-V * HashTable<K, V>::get(K * key){
+V * HashTableOpenAddressing<K, V>::get(K * key){
 	return this->getValue(key);
 }
 
 template <typename K, typename V>
-int HashTable<K, V>::getCapacity(void){
+int HashTableOpenAddressing<K, V>::getCapacity(void){
 	return this->capacity;
 }
 
 template <typename K, typename V>
-int HashTable<K, V>::getSize(void){
+int HashTableOpenAddressing<K, V>::getSize(void){
 	return this->size;
 }
 
 template <typename K, typename V>
-int HashTable<K, V>::getUsedBuckets(void){
+int HashTableOpenAddressing<K, V>::getUsedBuckets(void){
 	return this->usedBuckets;
 }
 
 template <typename K, typename V>
-int HashTable<K, V>::getThreshold(void){
+int HashTableOpenAddressing<K, V>::getThreshold(void){
 	return this->threshold;
 }
 
 template <typename K, typename V>
-float HashTable<K, V>::getLoadFactor(void){
+float HashTableOpenAddressing<K, V>::getLoadFactor(void){
 	return this->loadFactor;
 }
 
 //Private functions
 template <typename K, typename V>
-int HashTable<K, V>::normalizeIndex(int keyHash){
+int HashTableOpenAddressing<K, V>::normalizeIndex(int keyHash){
 	return keyHash % this->capacity;
 }
 
 template <typename K, typename V>
-void HashTable<K, V>::resize(void){		
+void HashTableOpenAddressing<K, V>::resize(void){		
 	DynamicArray<K *> * oldKeys = new DynamicArray<K *>(this->capacity);
 	*oldKeys = *this->keys;
 	DynamicArray<V *> * oldValues = new DynamicArray<V *>(this->capacity);
@@ -150,32 +150,32 @@ void HashTable<K, V>::resize(void){
 }
 
 template <typename K, typename V>
-int HashTable<K, V>::adjustCapacity(void){
+int HashTableOpenAddressing<K, V>::adjustCapacity(void){
 	int newCapacity = this->capacity;
 	while(this->gcd(newCapacity, this->capacity) != 1) newCapacity++;
 	return newCapacity;
 }
 
 template <typename K, typename V>
-int HashTable<K, V>::recalculateThreshold(void){
+int HashTableOpenAddressing<K, V>::recalculateThreshold(void){
 	this->threshold = (int)(this->loadFactor * this->capacity);
 	return this->threshold;
 }
 
 template <typename K, typename V>
-int HashTable<K, V>::gcd(int a, int b){
+int HashTableOpenAddressing<K, V>::gcd(int a, int b){
 	if(b == 1) return a;
 	return(b, a % b);
 }
 
 template <typename K, typename V>
-int HashTable<K, V>::probe(int x){
+int HashTableOpenAddressing<K, V>::probe(int x){
 	return CONST_MULTIPLIER * x;
 }
 
 //Public functions
 template <typename K, typename V>
-void HashTable<K, V>::add(K * key, V * value){
+void HashTableOpenAddressing<K, V>::add(K * key, V * value){
 	if(key == NULL) return;
 	if(this->usedBuckets >= this->threshold) this->resize();
 	
@@ -215,22 +215,22 @@ void HashTable<K, V>::add(K * key, V * value){
 }
 
 template <typename K, typename V>
-void HashTable<K, V>::append(K * key, V * value){
+void HashTableOpenAddressing<K, V>::append(K * key, V * value){
 	this->add(key, value);
 }
 
 template <typename K, typename V>
-void HashTable<K, V>::put(K * key, V * value){
+void HashTableOpenAddressing<K, V>::put(K * key, V * value){
 	this->add(key, value);
 }
 
 template <typename K, typename V>
-void HashTable<K, V>::insert(K * key, V * value){
+void HashTableOpenAddressing<K, V>::insert(K * key, V * value){
 	this->add(key, value);
 }
 
 template <typename K, typename V>
-bool HashTable<K, V>::remove(K * key){
+bool HashTableOpenAddressing<K, V>::remove(K * key){
 	if(key == NULL) return false;
 	
 	const int offset = this->normalizeIndex(getHash(key));
@@ -250,17 +250,17 @@ bool HashTable<K, V>::remove(K * key){
 }
 
 template <typename K, typename V>
-bool HashTable<K, V>::deleteItem(K * key){
+bool HashTableOpenAddressing<K, V>::deleteItem(K * key){
 	return this->remove(key);
 }
 
 template <typename K, typename V>
-bool HashTable<K, V>::isEmpty(void){
+bool HashTableOpenAddressing<K, V>::isEmpty(void){
 	return this->size == 0;
 }
 
 template <typename K, typename V>
-bool HashTable<K, V>::contains(K * key){
+bool HashTableOpenAddressing<K, V>::contains(K * key){
 	if(key == NULL) return false;
 	
 	const int offset = this->normalizeIndex(getHash(key));
@@ -274,7 +274,7 @@ bool HashTable<K, V>::contains(K * key){
 }
 
 template <typename K, typename V>
-void HashTable<K, V>::printTable(void){
+void HashTableOpenAddressing<K, V>::printTable(void){
 	for(int i = 0; i < this->capacity; i++){
 		if(this->keys->get(i) != NULL && this->keys->get(i) != this->TOMBSTONE) cout << "Line " << i + 1 << ": " << *this->values->get(i) << endl;
 		else cout << "Line " << i + 1 << ": NULL" << endl;
