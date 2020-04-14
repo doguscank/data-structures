@@ -8,7 +8,7 @@
 #define MAX(i, j) i > j ? i : j
 
 class BinaryHeap{
-	private:
+	protected:
 		int heapCapacity; //Capacity of heap
 		int heapSize; //Number of elements in heap
 		DynamicArrayInt * heap = NULL;

@@ -28,7 +28,7 @@ class BSTNode{
 		void setRight(BSTNode * node);
 		
 		//Constructors
-		BSTNode(T value);
+		BSTNode(T value) : BSTNode(value, NULL, NULL){};
 		BSTNode(T value, BSTNode * left, BSTNode * right);
 };
 
@@ -40,17 +40,17 @@ class BinarySearchTree{
 		int nodeCount;
 		
 		//Functions
+		BSTNode<T> * findMin(BSTNode<T> * node);
+		BSTNode<T> * findMax(BSTNode<T> * node);
+
 		BSTNode<T> * getNode(T value);
 		BSTNode<T> * removeNode(BSTNode<T> * node, T value);
 		void swap(BSTNode<T> * n1, BSTNode<T> * n2);
-		int height(BSTNode<T> * node);
 		void preorderTraversal(BSTNode<T> * root);
 		void inorderTraversal(BSTNode<T> * root);
 		void postorderTraversal(BSTNode<T> * root);
 		void levelOrderTraversal(Queue< BSTNode<T> * > * q, BSTNode<T> * root);
 	public:
-		BSTNode<T> * findMin(BSTNode<T> * node);
-		BSTNode<T> * findMax(BSTNode<T> * node);
 		//Getters
 		BSTNode<T> * getRoot(void);
 				
@@ -62,6 +62,7 @@ class BinarySearchTree{
 		bool isEmpty(void);
 		bool contains(T value);
 		int size(void);
+		int height(BSTNode<T> * node);
 		int height(void);
 		void preorderTraversal(void);
 		void inorderTraversal(void);
@@ -76,13 +77,6 @@ class BinarySearchTree{
 
 //Node class
 //Constructors
-template <typename T>
-BSTNode<T>::BSTNode(T value){
-	this->value = value;
-	this->left = NULL;
-	this->right = NULL;
-}
-	
 template <typename T>
 BSTNode<T>::BSTNode(T value, BSTNode<T> * left, BSTNode<T> * right){
 	this->value = value;
@@ -213,12 +207,6 @@ void BinarySearchTree<T>::swap(BSTNode<T> * n1, BSTNode<T> * n2){
 }
 
 template <typename T>
-int BinarySearchTree<T>::height(BSTNode<T> * node){
-	if(node == NULL) return 0;
-	else return MAX(this->height(node->getLeft()), this->height(node->getRight())) + 1;
-}
-
-template <typename T>
 void BinarySearchTree<T>::preorderTraversal(BSTNode<T> * root){
 	if(root == NULL) return;
 	
@@ -307,6 +295,12 @@ bool BinarySearchTree<T>::contains(T value){
 template <typename T>
 int BinarySearchTree<T>::size(void){
 	return this->nodeCount;
+}
+
+template <typename T>
+int BinarySearchTree<T>::height(BSTNode<T> * node){
+	if(node == NULL) return 0;
+	else return MAX(this->height(node->getLeft()), this->height(node->getRight())) + 1;
 }
 
 template <typename T>
